@@ -36,7 +36,7 @@ data "vsphere_virtual_machine" "template" {
 
 
 resource "vsphere_virtual_machine" "vm" {
-  name             = "centos7-vm"
+  name             = "CentOS7APP01"
   resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
   num_cpus         = 1
   memory           = 1024
@@ -48,8 +48,8 @@ resource "vsphere_virtual_machine" "vm" {
 
   disk {
     label            = "disk0"
-    size             = 6
-    thin_provisioned = false
+    size             = 10
+    thin_provisioned = true
 
   }
 
@@ -59,7 +59,7 @@ resource "vsphere_virtual_machine" "vm" {
 
     customize {
       linux_options {
-        host_name = "centos7-vm"
+        host_name = "CentOS7APP01"
         domain    = "test.org.in"
       }
       network_interface {
